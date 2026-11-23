@@ -6,7 +6,7 @@
 
 [[repos]]
 name = "handl-lang/lib-kv-hashmap"
-dir = "/home/luis/GitHub/handl-lang/lib-kv-hashmap"
+dir = "~//GitHub/handl-lang/lib-kv-hashmap"
 branch = "refs/heads/main"
   [repos.runner]
   kind = "script"
