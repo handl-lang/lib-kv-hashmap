@@ -9,17 +9,17 @@ cap "kv.remove"
 cap "kv.clear"
 cap "kv.has"
 cap "kv.size"
-op "kv.get" : String -> String?
+op "kv.get" : String ~> String?
   guarantee: True
-op "kv.set" : (String * String) -> Unit
+op "kv.set" : (String * String) ~> Unit
   guarantee: True
-op "kv.remove" : String -> Unit
+op "kv.remove" : String ~> Unit
   guarantee: True
-op "kv.clear" : Unit -> Unit
+op "kv.clear" : Unit ~> Unit
   guarantee: True
-op "kv.has" : String -> Bool
+op "kv.has" : String ~> Bool
   guarantee: True
-op "kv.size" : Unit -> Int
+op "kv.size" : Unit ~> Int
   guarantee: NonNeg(output)
 
 handle "kv.get" with rust_kv_get
