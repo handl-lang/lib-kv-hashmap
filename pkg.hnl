@@ -1,0 +1,14 @@
+-- lib-kv-hashmap: the `kv_hashmap` module — in-memory
+-- HashMap-backed `KeyValueStore` implementation of the `kv`
+-- contract. Transitional layout: the .hnl surface is
+-- `handl-packages/kv_hashmap/kv_hashmap.hnl`; the impl is the
+-- `handl-plugin-lib-kv-hashmap` crate under `src/`.
+{
+  deps: { kv: "branch:main" },
+  modules: ["kv_hashmap"],
+  name: "kv_hashmap",
+  description: "In-memory HashMap-backed KeyValueStore implementation of the kv contract.",
+  license: "MIT",
+  keywords: ["kv", "hashmap", "in-memory", "backend", "handl"],
+  homepage: "https://github.com/handl-lang/lib-kv-hashmap",
+}
