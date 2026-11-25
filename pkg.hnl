@@ -6,7 +6,7 @@
 {
   deps: { kv: "branch:main" },
   modules: ["kv_hashmap"],
-  name: "kv_hashmap",
+  name: "kv-hashmap",
   description: "In-memory HashMap-backed KeyValueStore implementation of the kv contract.",
   license: "MIT",
   keywords: ["kv", "hashmap", "in-memory", "backend", "handl"],
