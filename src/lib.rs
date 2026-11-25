@@ -46,6 +46,11 @@ pub const KV_HASHMAP_OPS: &[&str] = &[
     "kv.size",
 ];
 
+/// The `atoms.yaml` atom spec (P-013 T-151) — vendored for consumers that
+/// build the spec-driven registry (`atoms::module_atoms` +
+/// [`kv_impls`]) instead of [`kv_hashmap_op_registry`].
+pub const KV_HASHMAP_ATOMS: &str = include_str!("../atoms.yaml");
+
 /// In-memory key-value store backed by [`HashMap`].
 ///
 /// Thread-safe via `Mutex`. For persistent storage, consider a future
@@ -300,6 +305,25 @@ pub fn kv_hashmap_op_registry() -> OpRegistry {
     );
     registry.register("kv.size", Arc::new(KvSize { store }));
     registry
+}
+
+/// `impl:` table for `atoms.yaml` (`module: kv`) — P-013 T-151 spec-driven
+/// registry path. Same shared-store contract as [`kv_hashmap_op_registry`]:
+/// one [`HashKeyValueStore`] `Arc` cloned into every impl so state
+/// persists across calls. Keys match the spec's `impl:` fields.
+pub fn kv_impls() -> Vec<(&'static str, Arc<dyn Op>)> {
+    let store = shared_store();
+    vec![
+        ("kv_get", Arc::new(KvGet { store: store.clone() })),
+        ("kv_set", Arc::new(KvSet { store: store.clone() })),
+        (
+            "kv_remove",
+            Arc::new(KvRemove { store: store.clone() }),
+        ),
+        ("kv_clear", Arc::new(KvClear { store: store.clone() })),
+        ("kv_has", Arc::new(KvHas { store: store.clone() })),
+        ("kv_size", Arc::new(KvSize { store })),
+    ]
 }
 
 // ---------------------------------------------------------------------------
