@@ -3,6 +3,7 @@
 -- contract. Transitional layout: the .hnl surface is
 -- `handl-packages/kv_hashmap/kv_hashmap.hnl`; the impl is the
 -- `handl-plugin-lib-kv-hashmap` crate under `src/`.
+-- test_coverage "none": comment-only interface doc — impl is the Rust kv-hashmap crate (cargo test).
 {
   deps: { kv: "branch:main" },
   modules: ["kv_hashmap"],
@@ -11,4 +12,5 @@
   license: "MIT",
   keywords: ["kv", "hashmap", "in-memory", "backend", "handl"],
   homepage: "https://github.com/handl-lang/lib-kv-hashmap",
+  test_coverage: "none",
 }
